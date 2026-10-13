@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, HostListener, inject } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, inject, input } from '@angular/core';
 
 @Directive({
   selector: '[appMoveOnClick]',
@@ -6,14 +6,20 @@ import { Directive, ElementRef, HostBinding, HostListener, inject } from '@angul
     '(mouseover)': 'move($event)',
     '[style.top]': 'top',
     '[style.left]': 'left',
-    '[style.position]': '"absolute"',
+    '[style.position]': '"absolute"'
   }
 })
 export class MoveOnClick {
   protected top = '';
   protected left = '';
 
+  readonly disabled = input<boolean>()
+
   move(event?: MouseEvent): void {
+    if (this.disabled()) {
+      return;
+    }
+
     const el = event?.currentTarget as HTMLElement;
     const width = el?.offsetWidth ?? 50;
     const height = el?.offsetHeight ?? 50;
