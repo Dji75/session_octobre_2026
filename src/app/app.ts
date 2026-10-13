@@ -1,10 +1,11 @@
 import { Component, inject, NgZone, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './core/header/header';
+import { Highlight } from './shared/directives/highlight';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header],
+  imports: [RouterOutlet, Header, Highlight],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
