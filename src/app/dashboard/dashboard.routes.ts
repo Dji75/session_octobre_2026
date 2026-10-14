@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
+import { provideState } from '@ngrx/store';
+import { dashboardFeature } from './shared/store/dashboard-store';
 
 export default [
   {
     path: '',
     loadComponent: () => import('./dashboard'),
+    providers: [provideState(dashboardFeature)],
     children: [
       {
         path: '',

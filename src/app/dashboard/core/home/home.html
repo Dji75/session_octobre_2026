@@ -21,9 +21,9 @@
       }
     </div>
   }
+  <button type="button" [disabled]="dynamicForm().invalid()" (click)="saveForm()">Submit</button>
 </form>
 
 <hr />
 <pre>Valeur : {{ dynamicForm().value() | json }}</pre>
 <pre>Valide : {{ dynamicForm().valid() }}</pre>
-

@@ -1,7 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { JsonPipe } from '@angular/common';
 import { form, FormField, validate } from '@angular/forms/signals';
 import { AbstractControl, ValidatorFn, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { FormModel } from '../../shared/models/form.model';
+import { saveFormValue } from '../../shared/store/dashboard-store';
 
 interface FieldConfig {
   name: string;
@@ -23,6 +26,7 @@ const config: FieldConfig[] = [
   templateUrl: './home.html',
 })
 export default class Home {
+  readonly #store = inject(Store);
   readonly config = config;
 
   // Génération automatique du modèle Signal à partir de la config
@@ -47,4 +51,9 @@ export default class Home {
       }
     }
   });
+
+
+  saveForm() {
+    this.#store.dispatch(saveFormValue({ value: this.dynamicForm().value() as FormModel }));
+  }
 }

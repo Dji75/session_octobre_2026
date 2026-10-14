@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { dashboardFeature } from './shared/store/dashboard-store';
 
 @Component({
   imports: [
@@ -11,4 +13,6 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './dashboard.html',
 })
 export default class Dashboard {
+  readonly #store = inject(Store);
+  protected readonly name = this.#store.selectSignal(dashboardFeature.selectName);
 }
