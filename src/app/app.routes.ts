@@ -9,8 +9,8 @@ export default [
     loadComponent: () => import('./core/home/home').then(m => m.Home),
   },
   {
-    path: 'products-list',
-    loadComponent: () => import('./products/products').then(m => m.Products),
+    path: 'api-calls',
+    loadComponent: () => import('./api-calls/api-calls'),
     // providers: [ProductApi],
   },
   {

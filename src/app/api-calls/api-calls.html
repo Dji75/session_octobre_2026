@@ -1,0 +1,24 @@
+<p>api-calls works!</p>
+
+Filter: <input type="text" [(ngModel)]="filter"><br/>
+
+
+@if (productsResource.isLoading()) {
+  Loading...
+} @else if (productsResource.error()) {
+  Error loading data
+} @else {
+  @let products = productsResource.value();
+  @for (product of products?.products; track product.id) {
+    <article>
+      <section>
+        <h2>{{ product.title }}</h2>
+        <div> {{ product.description }}</div>
+      </section>
+    </article>
+  } @empty {
+    No products available
+  }
+}
+
+
