@@ -1,1 +1,29 @@
 <p>dashboard home works!</p>
+
+<form novalidate>
+  @for (field of config; track field.name) {
+    <div style="margin-bottom: 1rem;">
+      <label [for]="field.name" style="display: block; font-weight: bold;">
+        {{ field.name }}
+      </label>
+      <input
+        [id]="field.name"
+        [type]="field.name === 'age' ? 'number' : 'text'"
+        [formField]="dynamicForm[field.name]"
+      />
+
+      @if (dynamicForm[field.name]().invalid()) {
+        <div style="color: crimson; font-size: 0.875rem;">
+          @for (error of dynamicForm[field.name]().errors(); track error.kind) {
+            <span>{{ error.message ?? error.kind }}</span>
+          }
+        </div>
+      }
+    </div>
+  }
+</form>
+
+<hr />
+<pre>Valeur : {{ dynamicForm().value() | json }}</pre>
+<pre>Valide : {{ dynamicForm().valid() }}</pre>
+
