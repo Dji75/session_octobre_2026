@@ -19,5 +19,11 @@ export default [
     // providers: [ProductApi],
     loadChildren: () => import('./products/products.routes'),
   },
+  {
+    path: 'dashboard',
+    // loadComponent: () => import('./products/products').then(m => m.Products),
+    // providers: [ProductApi],
+    loadChildren: () => import('./dashboard/dashboard.routes'),
+  },
   { path: '**',  redirectTo: '/', pathMatch: 'full' },
 ] satisfies Routes;
