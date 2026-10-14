@@ -2,11 +2,13 @@ import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { dashboardFeature } from './shared/store/dashboard-store';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   imports: [
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    JsonPipe
   ],
   selector: 'app-dashboard',
   styleUrl: './dashboard.scss',
@@ -14,5 +16,6 @@ import { dashboardFeature } from './shared/store/dashboard-store';
 })
 export default class Dashboard {
   readonly #store = inject(Store);
-  protected readonly name = this.#store.selectSignal(dashboardFeature.selectName);
+  protected readonly state = this.#store.selectSignal(dashboardFeature.selectDashboardState);
+  protected readonly hello = this.#store.selectSignal(dashboardFeature.hello);
 }
