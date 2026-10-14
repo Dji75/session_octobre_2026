@@ -1,1 +1,14 @@
 <p>user-management works!</p>
+
+<article>
+  <label for="name">Name: </label>
+  <input id="name" type="text" [formField]="form.name" /><br/>
+  <button type="button" (click)="addUser()">Add user</button>
+</article>
+
+Liste des utilisateurs:
+@for (user of userStore.entities(); track user.id) {
+  <p>Id:  {{ user.id }}</p>
+  <p>Name: {{ user.name }}</p>
+  <button type="button" (click)="userStore.remove(user.id)">Remove user</button>
+}
