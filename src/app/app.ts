@@ -12,6 +12,7 @@ registerLocaleData(fr);
   selector: 'app-root',
   imports: [RouterOutlet, Header, Highlight],
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.scss',
   // changeDetection: ChangeDetectionStrategy.Eager,
 })

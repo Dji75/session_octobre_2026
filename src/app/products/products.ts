@@ -1,4 +1,4 @@
-import { afterNextRender, Component, computed, effect, inject, signal } from '@angular/core';
+import { afterNextRender, Component, computed, effect, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ProductApi } from './shared/services/product.api';
 import { MoveOnClick } from '../shared/directives/move-on-click';
 import { PluralSingularPipe } from '../shared/pipes/plural-singular.pipe';
@@ -14,6 +14,7 @@ import { CurrencyPipe, DecimalPipe, PercentPipe } from '@angular/common';
     CurrencyPipe
   ],
   templateUrl: './products.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './products.scss',
   // providers: [ProductApi],
 })

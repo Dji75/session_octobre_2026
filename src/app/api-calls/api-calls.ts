@@ -1,4 +1,4 @@
-import { Component, computed, model } from '@angular/core';
+import { Component, computed, model, ChangeDetectionStrategy } from '@angular/core';
 import { httpResource } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
@@ -14,6 +14,7 @@ interface Product {
     FormsModule
   ],
   templateUrl: './api-calls.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './api-calls.scss',
 })
 export default class ApiCalls {
