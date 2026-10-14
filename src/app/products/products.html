@@ -1,3 +1,16 @@
 <p>products works!</p>
 
+<p>
+  @let nombre = 45;
+  il y a {{ nombre | pluralSingular: 'objet': 'trolls' }} dans la liste
+</p>
+<p>
+  @let percent = 1.568725474;
+  Number: {{ percent | number : '1.0-10' }} avec pipe: {{ percent | number : '5.0-3' : 'fr-FR' }}
+</p>
+<p>
+  @let percent2 = 1.5;
+  Number: {{ percent2 | number : '1.0-10' }} avec pipe:  {{ percent2 | number : '5.0-3' }}
+</p>
+
 <button type="button" appMoveOnClick [disabled]="disabled()" (click)="disabled.set(true)">Catch me if you can !</button>
